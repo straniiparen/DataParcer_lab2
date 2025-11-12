@@ -28,9 +28,9 @@ public class StatisticsCalculator {
     public void printFloorStats(List<Address> addresses) {
         Map<String, int[]> cityFloors = new HashMap<>();
         for (Address addr : addresses) {
-            cityFloors.putIfAbsent(addr.getCity(), new int[5]);
+            cityFloors.putIfAbsent(addr.getCity(), new int[10]);
             int[] floors = cityFloors.get(addr.getCity());
-            if (addr.getFloor() >= 1 && addr.getFloor() <= 5) {
+            if (addr.getFloor() >= 1) {
                 floors[addr.getFloor() - 1]++;
             }
         }
@@ -40,6 +40,9 @@ public class StatisticsCalculator {
             System.out.printf("Город: %s%n", entry.getKey());
             int[] floors = entry.getValue();
             for (int i = 0; i < floors.length; i++) {
+                if (floors[i] == 0){
+                    continue;
+                }
                 System.out.printf("  %d-этажных: %d%n", i + 1, floors[i]);
             }
         }

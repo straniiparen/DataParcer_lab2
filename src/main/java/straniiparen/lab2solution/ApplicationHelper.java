@@ -54,7 +54,6 @@ public class ApplicationHelper {
             System.out.println("Ошибка: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Ошибка обработки файла: " + e.getMessage());
-            e.printStackTrace();
         }
 
         long endTime = System.currentTimeMillis();
